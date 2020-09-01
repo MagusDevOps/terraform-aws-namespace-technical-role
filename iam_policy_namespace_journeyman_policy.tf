@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "namespace_journeyman_policy_document" {
+data "aws_iam_policy_document" "namespace_technical_policy_document" {
   statement {
     sid = "Crypto"
 
@@ -106,8 +106,8 @@ data "aws_iam_policy_document" "namespace_journeyman_policy_document" {
   }
 }
 
-resource "aws_iam_policy" "namespace_journeyman_policy" {
-  name   = "${local.prefix}-${local.namespace}-journeyman-policy"
+resource "aws_iam_policy" "namespace_technical_policy" {
+  name   = "${local.prefix}-${local.namespace}-technical-policy"
   path   = "${local.policy_path}"
-  policy = "${data.aws_iam_policy_document.namespace_journeyman_policy_document.json}"
+  policy = "${data.aws_iam_policy_document.namespace_technical_policy_document.json}"
 }

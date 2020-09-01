@@ -1,10 +1,10 @@
-data "aws_iam_policy_document" "namespace_journeyman_role_assumable_document" {
+data "aws_iam_policy_document" "namespace_technical_role_assumable_document" {
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRole"]
 
     resources = [
-      "${aws_iam_role.journeyman_role.arn}",
+      "${aws_iam_role.technical_role.arn}",
     ]
 
     condition {
@@ -38,8 +38,8 @@ data "aws_iam_policy_document" "namespace_journeyman_role_assumable_document" {
   }
 }
 
-resource "aws_iam_policy" "journeyman_role_assumable_policy" {
-  name   = "${local.prefix}-${local.namespace}-journeyman-assumable-role"
+resource "aws_iam_policy" "technical_role_assumable_policy" {
+  name   = "${local.prefix}-${local.namespace}-technical-assumable-role"
   path   = "${local.policy_path}"
-  policy = "${data.aws_iam_policy_document.namespace_journeyman_role_assumable_document.json}"
+  policy = "${data.aws_iam_policy_document.namespace_technical_role_assumable_document.json}"
 }

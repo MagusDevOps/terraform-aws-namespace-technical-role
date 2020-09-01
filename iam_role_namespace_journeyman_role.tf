@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "journeyman_role_document" {
+data "aws_iam_policy_document" "technical_role_document" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -12,18 +12,18 @@ data "aws_iam_policy_document" "journeyman_role_document" {
   }
 }
 
-resource "aws_iam_role" "journeyman_role" {
-  name               = "${local.prefix}-${var.namespace}-journeyman-role"
-  assume_role_policy = "${data.aws_iam_policy_document.journeyman_role_document.json}"
+resource "aws_iam_role" "technical_role" {
+  name               = "${local.prefix}-${var.namespace}-technical-role"
+  assume_role_policy = "${data.aws_iam_policy_document.technical_role_document.json}"
   tags               = "${local.tags}"
 }
 
-resource "aws_iam_role_policy_attachment" "attach_journeyman_policy" {
-  policy_arn = "${aws_iam_policy.namespace_journeyman_policy.arn}"
-  role       = "${aws_iam_role.journeyman_role.name}"
+resource "aws_iam_role_policy_attachment" "attach_technical_policy" {
+  policy_arn = "${aws_iam_policy.namespace_technical_policy.arn}"
+  role       = "${aws_iam_role.technical_role.name}"
 }
 
 resource "aws_iam_role_policy_attachment" "attach_readonly_policy" {
   policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
-  role       = "${aws_iam_role.journeyman_role.name}"
+  role       = "${aws_iam_role.technical_role.name}"
 }

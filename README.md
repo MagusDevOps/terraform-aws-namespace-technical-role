@@ -1,4 +1,4 @@
-# terraform-aws-namespace-journeyman-role
+# terraform-aws-namespace-technical-role
 ## Requirements
 
 No requirements.
@@ -77,10 +77,10 @@ Default: `"environment"`
 
 The following outputs are exported:
 
-### assumable\_journeyman\_role\_name
+### assumable\_technical\_role\_name
 
-### journeyman\_assumable\_policy\_arn
+### technical\_assumable\_policy\_arn
 
-### journeyman\_role\_arn
+### technical\_role\_arn
 
 ### group\_name
