@@ -49,6 +49,9 @@ data "aws_iam_policy_document" "namespace_journeyman_policy_document" {
       "secretsmanager:GetSecretValue",
       "secretsmanager:DescribeSecret",
       "secretsmanager:ListSecretVersionIds",
+      "secretsmanager:PutSecretValue",
+      "secretsmanager:RestoreSecret",
+      "secretsmanager:UpdateSecret",
     ]
 
     resources = [
@@ -60,23 +63,12 @@ data "aws_iam_policy_document" "namespace_journeyman_policy_document" {
     sid = "secretsParameters"
 
     actions = [
-      "ssm:GetParameter",
+      "ssm:GetParameter*",
+      "ssm:PutParameter",
     ]
 
     resources = [
       "arn:aws:ssm:*:${var.account_id}:parameter:${local.prefix}/${local.namespace}/*",
-    ]
-  }
-
-  statement {
-    sid = "email"
-
-    actions = [
-      "ses:Send*",
-    ]
-
-    resources = [
-      "arn:aws:ses:*:${var.account_id}:identity/${local.prefix}/${local.namespace}/*",
     ]
   }
 
