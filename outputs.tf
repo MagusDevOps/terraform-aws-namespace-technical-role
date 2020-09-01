@@ -10,3 +10,6 @@ output "journeyman_role_arn" {
   value = "${aws_iam_role.journeyman_role.arn}"
 }
 
+output "group_name" {
+  value = "${aws_iam_group.namespace_journeyman_group.name}"
+}

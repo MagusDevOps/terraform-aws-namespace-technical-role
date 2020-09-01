@@ -83,3 +83,4 @@ The following outputs are exported:
 
 ### journeyman\_role\_arn
 
+### group\_name
