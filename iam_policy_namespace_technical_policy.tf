@@ -9,8 +9,20 @@ data "aws_iam_policy_document" "namespace_technical_policy_document" {
       "kms:Encrypt",
     ]
 
+    condition {
+      test     = "StringEqualsIgnoreCase"
+      values   = ["${local.namespace}"]
+      variable = "iam:ResourceTag/${var.namespace_tag_key}"
+    }
+
+    condition {
+      test     = "StringEqualsIgnoreCase"
+      values   = ["${var.prefix}"]
+      variable = "iam:ResourceTag/${var.prefix_tag_key}"
+    }
+
     resources = [
-      "arn:aws:kms:*:${var.account_id}:key/${local.prefix}/${local.namespace}/*",
+      "arn:aws:kms:*:${var.account_id}:key/*",
     ]
   }
 

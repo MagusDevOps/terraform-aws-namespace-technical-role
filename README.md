@@ -1,4 +1,15 @@
 # terraform-aws-namespace-technical-role
+
+## Usage
+```HCL
+module "namespace-technical-role" {
+  source            = "MagusDevOps/namespace-technical-role/aws"
+  version           = "x.x.x"
+  account_id        = "${var.account_id}"
+  ...
+}
+```
+
 ## Requirements
 
 No requirements.
