@@ -104,6 +104,23 @@ data "aws_iam_policy_document" "namespace_technical_policy_document" {
   }
 
   statement {
+    sid = "keyspace"
+
+    actions = [
+      "cassandra:Alter",
+      "cassandra:Create",
+      "cassandra:Modify",
+      "cassandra:Restore",
+      "cassandra:Select",
+    ]
+
+    resources = [
+      "arn:aws:cassandra:*:${var.account_id}:/keyspace/${local.prefix}_${local.namespace}/",
+      "arn:aws:cassandra:*:${var.account_id}:/keyspace/${local.prefix}_${local.namespace}/table/*",
+    ]
+  }
+
+  statement {
     sid = "s3"
 
     actions = [
