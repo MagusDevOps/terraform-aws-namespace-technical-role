@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "namespace_technical_policy_document" {
+data "aws_iam_policy_document" "namespace_policy_document" {
   statement {
     sid = "Crypto"
 
@@ -135,8 +135,8 @@ data "aws_iam_policy_document" "namespace_technical_policy_document" {
   }
 }
 
-resource "aws_iam_policy" "namespace_technical_policy" {
+resource "aws_iam_policy" "namespace_policy" {
   name   = "${local.prefix}-${local.namespace}-technical-policy"
   path   = "${local.policy_path}"
-  policy = "${data.aws_iam_policy_document.namespace_technical_policy_document.json}"
+  policy = "${data.aws_iam_policy_document.namespace_policy_document.json}"
 }

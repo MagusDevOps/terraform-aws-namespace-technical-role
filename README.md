@@ -88,10 +88,10 @@ Default: `"environment"`
 
 The following outputs are exported:
 
-### assumable\_technical\_role\_name
+### grant\_assumable\_policy\_arn
 
-### technical\_assumable\_policy\_arn
+### role\_arn
 
-### technical\_role\_arn
+### role\_name
 
 ### group\_name
