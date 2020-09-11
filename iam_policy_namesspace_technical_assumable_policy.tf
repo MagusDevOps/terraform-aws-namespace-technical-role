@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "namespace_role_assumable_document" {
     actions = ["sts:AssumeRole"]
 
     resources = [
-      "${aws_iam_role.technical_role.arn}",
+      "${aws_iam_role.role.arn}",
     ]
 
     condition {
